@@ -7,10 +7,6 @@ class GradeTable extends Component {
   
   constructor(props) {
     super(props);
-
-    this.state = {
-        gradeRows: null
-    };
   }
   
   render() {
@@ -24,37 +20,11 @@ class GradeTable extends Component {
                 </tr>
             </thead>
             <tbody>
-                {this.state.gradeRows}
+                {this.props.gradeRows}
             </tbody>
         </table>
     );
   }
-
-  componentDidMount() {
-      
-    Progress.show();
-    var params = new FormData();
-    params.append('nim', '41155050140062');
-
-    const self = this;
-    axios.post('https://cors-anywhere.herokuapp.com/http://www.unla.ac.id/index.php/e_akademic/c_kartuhasilstudi/grid', 
-               params)
-          .then(response => {
-                const grades = response.data.data;
-                const rows = R.map(x => 
-                    <tr>
-                        <td>{x.nmmk}</td>
-                        <td>{x.nilaihuruf}</td>
-                        <td>{x.bobotnilai}</td>
-                    </tr>
-                , grades);
-
-                self.setState({
-                    gradeRows : rows
-                });
-          });
-  }
-
 }
 
 export default GradeTable;
