@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Progress from "react-progress-2";
 
 class GradeTable extends Component {
   
@@ -12,15 +13,7 @@ class GradeTable extends Component {
         }
       };
 
-      var params = new FormData();
-      params.append('nim', '41155050140062');
-
-      axios.post('https://cors-anywhere.herokuapp.com/http://www.unla.ac.id/index.php/e_akademic/c_kartuhasilstudi/grid', 
-                 params, 
-                 config)
-            .then(function (response) {
-                console.log(response);
-            })
+      
   }
   
   render() {
@@ -28,6 +21,19 @@ class GradeTable extends Component {
         <table className="table table-bordered">
         </table>
     );
+  }
+
+  componentDidMount() {
+    Progress.show();
+    var params = new FormData();
+    params.append('nim', '41155050140062');
+
+    axios.post('https://cors-anywhere.herokuapp.com/http://www.unla.ac.id/index.php/e_akademic/c_kartuhasilstudi/grid', 
+               params)
+          .then(function (response) {
+                console.log(response);
+                Progress.hide();
+          })
   }
 }
 
