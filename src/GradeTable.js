@@ -17,7 +17,6 @@ class GradeTable extends Component {
               'Content-Type': 'application/x-www-form-urlencoded'
         }
       };
-      
   }
   
   render() {
