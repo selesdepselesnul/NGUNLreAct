@@ -6,17 +6,11 @@ import R from 'ramda';
 class GradeTable extends Component {
   
   constructor(props) {
-      super(props);
+    super(props);
 
-      this.state = {
-          gradeRows: null
-      };
-
-      var config = {
-        headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      };
+    this.state = {
+        gradeRows: null
+    };
   }
   
   render() {
@@ -37,6 +31,7 @@ class GradeTable extends Component {
   }
 
   componentDidMount() {
+      
     Progress.show();
     var params = new FormData();
     params.append('nim', '41155050140062');
@@ -44,7 +39,7 @@ class GradeTable extends Component {
     const self = this;
     axios.post('https://cors-anywhere.herokuapp.com/http://www.unla.ac.id/index.php/e_akademic/c_kartuhasilstudi/grid', 
                params)
-          .then(function (response) {
+          .then(response => {
                 const grades = response.data.data;
                 const rows = R.map(x => 
                     <tr>
@@ -57,8 +52,9 @@ class GradeTable extends Component {
                 self.setState({
                     gradeRows : rows
                 });
-          })
+          });
   }
+
 }
 
 export default GradeTable;
