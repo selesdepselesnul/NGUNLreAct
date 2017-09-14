@@ -50,8 +50,9 @@ class GradeFinder extends Component {
         <div className="input-group">
             <input type="text" 
                    className="form-control" 
-                   placeholder="Search for..." 
-                   aria-label="Search for..."
+                   placeholder="Ketik NPM lalu enter..." 
+                   aria-label="Ketik NPM lalu enter..."
+                   style={{fontSize: '240%'}}
                    onKeyUp={this.onKeyPressForId.bind(this)}/>
         </div>
     );
