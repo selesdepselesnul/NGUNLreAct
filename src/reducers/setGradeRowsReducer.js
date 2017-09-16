@@ -15,6 +15,11 @@ export default function setGradeRowsReducer(
             return {
                 gradeRows: action.payload.data.data
             };
+        case "SET_GRADE_ROWS_REJECTED":
+            Progress.hide();
+            return {
+                gradeRows: []
+            };
         case "SET_GRADE_ROWS_BY_SUBJECT_NAME":
             const payload = action.payload;
             Progress.hide();
