@@ -16,7 +16,7 @@ const GradeFinder = (props) => {
                   className="form-control" 
                   placeholder="Ketik NPM disini lalu tekan enter..." 
                   aria-label="Ketik NPM disini lalu tekan enter..."
-                  style={{fontSize: '240%'}}
+                  style={{fontSize: '240%', border: '0'}}
                   onKeyUp={onKeyPressForId}/>
       </div>
   );
