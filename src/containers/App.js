@@ -13,7 +13,8 @@ const App = (props) => (
       <Progress.Component/>
       <GithubBadge/>
       <GradeFinder onFindSuccess={props.setGradeRows}/>
-      <SubjectFinder gradeRows={props.gradeRows} 
+      <SubjectFinder gradeRows={props.gradeRows}
+                     firstOldGradeRows={props.firstOldGradeRows} 
                      onFindSuccess={props.setGradeRowsBySubjectName}/>
       <GradeTable gradeRows={props.gradeRows}/>
     </div>
@@ -21,14 +22,16 @@ const App = (props) => (
 
 const mapStateToProps = 
       (state) => ({ 
-        gradeRows: state.gradeRows ? state.gradeRows : []
+        gradeRows: state.gradeRows ? state.gradeRows : [],
+        firstOldGradeRows: state.firstOldGradeRows ? state.firstOldGradeRows : []
       });
 
 const mapDispatchToProps = 
   (dispatch) => ({
       setGradeRows: (studentId) => dispatch(setGradeRows(studentId)),
       setGradeRowsBySubjectName: 
-        (gradeRows, subjectName) => dispatch(setGradeRowsBySubjectName(gradeRows, subjectName))
+        (firstOldGradeRows, gradeRows, subjectName) => 
+            dispatch(setGradeRowsBySubjectName(firstOldGradeRows, gradeRows, subjectName))
   });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

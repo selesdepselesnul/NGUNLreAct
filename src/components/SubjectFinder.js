@@ -6,7 +6,7 @@ const SubjectFinder = (props) => {
   const onKeyPressSubject = (event) => {
     if(event.key == 'Enter') {
       Progress.show();
-      props.onFindSuccess(props.gradeRows, event.target.value);
+      props.onFindSuccess(props.firstOldGradeRows, props.gradeRows, event.target.value);
     } 
   };
 

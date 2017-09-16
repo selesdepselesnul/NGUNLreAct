@@ -5,7 +5,8 @@ import Progress from "react-progress-2";
 
 export default function setGradeRowsReducer(
     state = {
-        gradeRows: []
+        gradeRows: [],
+        firstOldGradeRows: []
     }, 
     action) {
     
@@ -13,12 +14,14 @@ export default function setGradeRowsReducer(
         case "SET_GRADE_ROWS_FULFILLED":
             Progress.hide();
             return {
-                gradeRows: action.payload.data.data
+                gradeRows: action.payload.data.data,
+                firstOldGradeRows : action.payload.data.data
             };
         case "SET_GRADE_ROWS_REJECTED":
             Progress.hide();
             return {
-                gradeRows: []
+                gradeRows: [],
+                firstOldGradeRows: []
             };
         case "SET_GRADE_ROWS_BY_SUBJECT_NAME":
             const payload = action.payload;
@@ -26,7 +29,8 @@ export default function setGradeRowsReducer(
             console.log(payload.subjectName);
             if(payload.subjectName == '') {
                 return {
-                    gradeRows: payload.gradeRows
+                    gradeRows: payload.firstOldGradeRows,
+                    firstOldGradeRows: payload.firstOldGradeRows
                 };
             } else {
                 return {
@@ -34,8 +38,9 @@ export default function setGradeRowsReducer(
                                     x => x.nmmk
                                         .toLocaleLowerCase()
                                         .match(payload.subjectName
-                                                        .toLocaleLowerCase()), 
-                                    payload.gradeRows)
+                                                      .toLocaleLowerCase()), 
+                                    payload.gradeRows),
+                    firstOldGradeRows: payload.firstOldGradeRows
                 };
             }
     }
