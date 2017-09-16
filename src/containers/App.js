@@ -6,21 +6,14 @@ import { setGradeRows } from "../actions/setGradeRowsAction";
 import "react-progress-2/main.css"
 import Progress from "react-progress-2";
 
-class App extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div className="row">
-        <Progress.Component/>
-        <GradeFinder onFindSuccess={(gradeRows) => this.props.setGradeRows(gradeRows)}/>
-        <GradeTable gradeRows={this.props.gradeRows}/>
-      </div>
-    );
-  }
+const App = (props) => {
+  return (
+    <div className="row">
+      <Progress.Component/>
+      <GradeFinder onFindSuccess={(gradeRows) => props.setGradeRows(gradeRows)}/>
+      <GradeTable gradeRows={props.gradeRows}/>
+    </div>
+  );
 }
 
 const mapStateToProps = (state) => {
