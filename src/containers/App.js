@@ -12,7 +12,7 @@ const App = (props) => {
     <div className="row">
       <Progress.Component/>
       <GithubBadge/>
-      <GradeFinder onFindSuccess={(gradeRows) => props.setGradeRows(gradeRows)}/>
+      <GradeFinder onFindSuccess={props.setGradeRows}/>
       <GradeTable gradeRows={props.gradeRows}/>
     </div>
   );

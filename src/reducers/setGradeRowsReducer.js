@@ -10,7 +10,8 @@ export default function setGradeRowsReducer(state = {
         case "SET_GRADE_ROWS_FULFILLED":
             const grades = action.payload.data.data;
             const rows = R.map(x => 
-                <tr>
+                <tr key={x.kdmk}>
+                    <td>{x.kdmk}</td>
                     <td>{x.nmmk}</td>
                     <td>{x.nilaihuruf}</td>
                     <td>{x.bobotnilai}</td>
