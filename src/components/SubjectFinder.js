@@ -4,10 +4,8 @@ import Progress from "react-progress-2";
 const SubjectFinder = (props) => {
   
   const onKeyPressSubject = (event) => {
-    if(event.key == 'Enter') {
       Progress.show();
       props.onFindSuccess(props.firstOldGradeRows, props.gradeRows, event.target.value);
-    } 
   };
 
   return (
