@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Progress from "react-progress-2";
 
-const GradeFinder = (props) => {
+const SubjectFinder = (props) => {
   
-  const onKeyPressForId = (event) => {
+  const onKeyPressSubject = (event) => {
     if(event.key == 'Enter') {
       Progress.show();
-      props.onFindSuccess(event.target.value);
+      props.onFindSuccess(props.gradeRows, event.target.value);
     } 
   };
 
@@ -15,10 +15,10 @@ const GradeFinder = (props) => {
         <div className="input-group">
             <input type="text" 
                     className="form-control text-center lead" 
-                    placeholder="Ketik NPM disini lalu tekan enter..." 
-                    aria-label="Ketik NPM disini lalu tekan enter..."
+                    placeholder="Ketik Nama matkul disini lalu tekan enter..." 
+                    aria-label="Ketik Nama matkul disini lalu tekan enter..."
                     style={{border: '0'}}
-                    onKeyUp={onKeyPressForId}/>
+                    onKeyUp={onKeyPressSubject}/>
         </div>
       </div>
   );
@@ -26,4 +26,4 @@ const GradeFinder = (props) => {
 };
   
 
-export default GradeFinder;
+export default SubjectFinder;
