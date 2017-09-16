@@ -13,7 +13,7 @@ const GradeFinder = (props) => {
   return (
       <div className="input-group">
           <input type="text" 
-                  className="form-control" 
+                  className="form-control text-center" 
                   placeholder="Ketik NPM disini lalu tekan enter..." 
                   aria-label="Ketik NPM disini lalu tekan enter..."
                   style={{fontSize: '240%', border: '0'}}
