@@ -7,4 +7,4 @@ import promise from "redux-promise-middleware";
 export default createStore(
                 setGradeRowsReducer, 
                 {}, 
-                applyMiddleware(createLogger(), thunk,  promise()));
+                applyMiddleware(thunk,  promise()));
