@@ -3,14 +3,7 @@ import axios from 'axios';
 import Progress from "react-progress-2";
 import R from 'ramda';
 
-class GradeTable extends Component {
-  
-  constructor(props) {
-    super(props);
-  }
-  
-  render() {
-    return (
+const GradeTable = (props) => (
         <table className="table table-bordered">
             <thead>
                 <tr>
@@ -20,11 +13,9 @@ class GradeTable extends Component {
                 </tr>
             </thead>
             <tbody>
-                {this.props.gradeRows}
+                {props.gradeRows}
             </tbody>
         </table>
     );
-  }
-}
 
 export default GradeTable;
