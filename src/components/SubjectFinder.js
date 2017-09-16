@@ -9,7 +9,9 @@ const SubjectFinder = (props) => {
   };
 
   return (
-      <div className={props.gradeRows.length > 0 ? "col-md-12" : "hidden"}>
+      <div className={props.firstOldGradeRows.length > 0 && props.subjectName !== '' ? 
+                      "col-md-12" 
+                      : "hidden"}>
         <div className="input-group">
             <input type="text" 
                     className="form-control text-center lead" 

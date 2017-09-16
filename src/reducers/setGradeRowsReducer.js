@@ -26,7 +26,6 @@ export default function setGradeRowsReducer(
         case "SET_GRADE_ROWS_BY_SUBJECT_NAME":
             const payload = action.payload;
             Progress.hide();
-            console.log(payload.subjectName);
             if(payload.subjectName == '') {
                 return {
                     gradeRows: payload.firstOldGradeRows,
