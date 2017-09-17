@@ -4,7 +4,7 @@ import Progress from "react-progress-2";
 const GradeFinder = (props) => {
   
   const onKeyPressForId = (event) => {
-    if(event.key == 'Enter') {
+    if(event.key === 'Enter') {
       Progress.show();
       props.onFindSuccess(event.target.value);
     } 

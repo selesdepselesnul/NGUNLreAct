@@ -13,9 +13,11 @@ export default function setGradeRowsReducer(
     switch(action.type) {
         case "SET_GRADE_ROWS_FULFILLED":
             Progress.hide();
+            
+            const gradeRowsPayload =  action.payload ?  action.payload.data.data : [];
             return {
-                gradeRows: action.payload.data.data,
-                firstOldGradeRows : action.payload.data.data
+                gradeRows: gradeRowsPayload,
+                firstOldGradeRows : gradeRowsPayload
             };
         case "SET_GRADE_ROWS_REJECTED":
             Progress.hide();
