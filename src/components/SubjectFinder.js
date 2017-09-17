@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Progress from "react-progress-2";
 
+const SUBJECT_BY_NAME_PLACEHOLDER = 'Ketik nama matkul disini untuk mecari...';
 const SubjectFinder = (props) => {
   
   const onKeyPressSubject = (event) => {
@@ -17,8 +18,8 @@ const SubjectFinder = (props) => {
         <div className="input-group">
             <input type="text" 
                     className="form-control text-center lead" 
-                    placeholder="Ketik Nama matkul disini lalu tekan enter..." 
-                    aria-label="Ketik Nama matkul disini lalu tekan enter..."
+                    placeholder={SUBJECT_BY_NAME_PLACEHOLDER} 
+                    aria-label={SUBJECT_BY_NAME_PLACEHOLDER}
                     style={{border: '0'}}
                     onKeyUp={onKeyPressSubject}/>
         </div>
