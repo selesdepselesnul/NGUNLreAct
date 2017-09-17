@@ -38,7 +38,7 @@ export default function setGradeRowsReducer(
                                         .toLocaleLowerCase()
                                         .match(payload.subjectName
                                                       .toLocaleLowerCase()), 
-                                    payload.gradeRows),
+                                    payload.firstOldGradeRows),
                     firstOldGradeRows: payload.firstOldGradeRows
                 };
             }
