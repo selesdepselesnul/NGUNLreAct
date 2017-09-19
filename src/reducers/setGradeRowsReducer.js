@@ -5,7 +5,11 @@ import Progress from "react-progress-2";
 import axios from 'axios';
 import {Observable} from 'rxjs';
 
+const SET_GRADE_ROWS = "SET_GRADE_ROWS";
 const SET_GRADE_ROWS_FULFILLED = "SET_GRADE_ROWS_FULFILLED";
+const SET_GRADE_ROWS_REJECTED = "SET_GRADE_ROWS_REJECTED";
+const SET_GRADE_ROWS_BY_SUBJECT_NAME = "SET_GRADE_ROWS_BY_SUBJECT_NAME";
+
 export function setGradeRowsReducer(
     state = {
         gradeRows: [],
@@ -21,13 +25,14 @@ export function setGradeRowsReducer(
                 gradeRows: action.payload,
                 firstOldGradeRows : action.payload
             };
-        case "SET_GRADE_ROWS_REJECTED":
+        case SET_GRADE_ROWS_REJECTED:
             Progress.hide();
+
             return {
-                gradeRows: [],
-                firstOldGradeRows: []
+                gradeRows: action.payload,
+                firstOldGradeRows: action.payload
             };
-        case "SET_GRADE_ROWS_BY_SUBJECT_NAME":
+        case SET_GRADE_ROWS_BY_SUBJECT_NAME:
             const payload = action.payload;
             Progress.hide();
             if(payload.subjectName == '') {
@@ -59,12 +64,16 @@ function setGradeRowsFulfilled(res) {
 }
 
 export function setGradeRowsEpic(action$) {
-    return action$.filter(action => action.type === 'SET_GRADE_ROWS')
+    return action$.filter(action => action.type === SET_GRADE_ROWS)
                   .switchMap(action => {
                         return Observable
                                  .ajax
                                  .post('https://cors-anywhere.herokuapp.com/http://www.unla.ac.id/index.php/e_akademic/c_kartuhasilstudi/grid',
                                        {'nim': action.payload})                        
-                                .map(res => setGradeRowsFulfilled(res));
+                                .map(res => setGradeRowsFulfilled(res))
+                                .catch(error => Observable.of({
+                                    type: SET_GRADE_ROWS_REJECTED,
+                                    payload: []
+                                }))
                    })
 }
