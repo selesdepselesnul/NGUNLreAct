@@ -64,12 +64,13 @@ function setGradeRowsFulfilled(res) {
 }
 
 export function setGradeRowsEpic(action$) {
+    const url = 
+        'https://cors-anywhere.herokuapp.com/http://www.unla.ac.id/index.php/e_akademic/c_kartuhasilstudi/grid';
     return action$.filter(action => action.type === SET_GRADE_ROWS)
                   .switchMap(action => {
                         return Observable
-                                 .ajax
-                                 .post('https://cors-anywhere.herokuapp.com/http://www.unla.ac.id/index.php/e_akademic/c_kartuhasilstudi/grid',
-                                       {'nim': action.payload})                        
+                                .ajax
+                                .post(url, {'nim': action.payload})                        
                                 .map(res => setGradeRowsFulfilled(res))
                                 .catch(error => Observable.of({
                                     type: SET_GRADE_ROWS_REJECTED,
