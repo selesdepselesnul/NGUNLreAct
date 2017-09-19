@@ -2,8 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import R from 'ramda';
 import Progress from "react-progress-2";
+import axios from 'axios';
+import {Observable} from 'rxjs';
 
-export default function setGradeRowsReducer(
+const SET_GRADE_ROWS_FULFILLED = "SET_GRADE_ROWS_FULFILLED";
+export function setGradeRowsReducer(
     state = {
         gradeRows: [],
         firstOldGradeRows: []
@@ -11,13 +14,12 @@ export default function setGradeRowsReducer(
     action) {
     
     switch(action.type) {
-        case "SET_GRADE_ROWS_FULFILLED":
+        case SET_GRADE_ROWS_FULFILLED:
             Progress.hide();
             
-            const gradeRowsPayload =  action.payload ?  action.payload.data.data : [];
             return {
-                gradeRows: gradeRowsPayload,
-                firstOldGradeRows : gradeRowsPayload
+                gradeRows: action.payload,
+                firstOldGradeRows : action.payload
             };
         case "SET_GRADE_ROWS_REJECTED":
             Progress.hide();
@@ -47,4 +49,22 @@ export default function setGradeRowsReducer(
     }
     
     return state;
+}
+
+function setGradeRowsFulfilled(res) {
+    return {
+        type: SET_GRADE_ROWS_FULFILLED,
+        payload: res.response.data
+    }
+}
+
+export function setGradeRowsEpic(action$) {
+    return action$.filter(action => action.type === 'SET_GRADE_ROWS')
+                  .switchMap(action => {
+                        return Observable
+                                 .ajax
+                                 .post('https://cors-anywhere.herokuapp.com/http://www.unla.ac.id/index.php/e_akademic/c_kartuhasilstudi/grid',
+                                       {'nim': action.payload})                        
+                                .map(res => setGradeRowsFulfilled(res));
+                   })
 }
