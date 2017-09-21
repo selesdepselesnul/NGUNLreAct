@@ -19,6 +19,7 @@ export function setGradeRowsReducer(
     
     switch(action.type) {
         case SET_GRADE_ROWS_FULFILLED:
+            console.log('mantab');
             Progress.hide();
             
             return {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {connect} from "react-redux";
 import GradeTable from '../components/GradeTable';
-import GradeFinder from '../components/GradeFinder';
+import GradeFinderContainer from './GradeFinderContainer';
 import GithubBadge from '../components/GithubBadge';
 import SubjectFinder from '../components/SubjectFinder';
 import { setGradeRows, setGradeRowsBySubjectName } from "../actions/setGradeRowsAction";
@@ -12,7 +12,7 @@ const App = (props) => (
     <div className="row">
       <Progress.Component/>
       <GithubBadge/>
-      <GradeFinder onFindSuccess={props.setGradeRows}/>
+      <GradeFinderContainer onFindSuccess={props.setGradeRows}/>
       <SubjectFinder gradeRows={props.gradeRows}
                      firstOldGradeRows={props.firstOldGradeRows} 
                      onFindSuccess={props.setGradeRowsBySubjectName}/>
