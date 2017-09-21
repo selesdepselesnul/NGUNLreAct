@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import GradeTable from '../components/GradeTable';
 import GradeFinderContainer from './GradeFinderContainer';
 import GithubBadge from '../components/GithubBadge';
-import SubjectFinder from '../components/SubjectFinder';
+import SubjectFinderContainer from './SubjectFinderContainer';
 import { setGradeRows, setGradeRowsBySubjectName } from "../actions/setGradeRowsAction";
 import "react-progress-2/main.css"
 import Progress from "react-progress-2";
@@ -13,9 +13,9 @@ const App = (props) => (
       <Progress.Component/>
       <GithubBadge/>
       <GradeFinderContainer onFindSuccess={props.setGradeRows}/>
-      <SubjectFinder gradeRows={props.gradeRows}
-                     firstOldGradeRows={props.firstOldGradeRows} 
-                     onFindSuccess={props.setGradeRowsBySubjectName}/>
+      <SubjectFinderContainer gradeRows={props.gradeRows}
+                              firstOldGradeRows={props.firstOldGradeRows} 
+                              onFindSuccess={props.setGradeRowsBySubjectName}/>
       <GradeTable gradeRows={props.gradeRows}/>
     </div>
 );
