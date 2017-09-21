@@ -2,17 +2,7 @@ import React, { Component } from 'react';
 import Progress from "react-progress-2";
 import R from 'ramda';
 
-const GradeTable = (props) => {
-    const trGradeRows = 
-        R.map(x => (<tr key={x.kdmk}>
-                        <td>{x.kdmk}</td>
-                        <td>{x.nmmk}</td>
-                        <td>{x.nilaihuruf}</td>
-                        <td>{x.bobotnilai}</td>
-                    </tr>),
-              props.gradeRows);
-    
-    return (
+const GradeTable = (props) => (
         <table className="table table-bordered">
             <thead>
                 <tr>
@@ -23,10 +13,8 @@ const GradeTable = (props) => {
                 </tr>
             </thead>
             <tbody>
-                {trGradeRows}
+                {props.rows}
             </tbody>
-        </table>
-    );
-};
+        </table>);
 
 export default GradeTable;
