@@ -18,24 +18,18 @@ export function setGradeRowsReducer(
     action) {
     
     switch(action.type) {
-        case SET_GRADE_ROWS_FULFILLED:
-            console.log('mantab');
-            Progress.hide();
-            
+        case SET_GRADE_ROWS_FULFILLED:            
             return {
                 gradeRows: action.payload,
                 firstOldGradeRows : action.payload
             };
         case SET_GRADE_ROWS_REJECTED:
-            Progress.hide();
-
             return {
                 gradeRows: action.payload,
                 firstOldGradeRows: action.payload
             };
         case SET_GRADE_ROWS_BY_SUBJECT_NAME:
             const payload = action.payload;
-            Progress.hide();
             if(payload.subjectName == '') {
                 return {
                     gradeRows: payload.firstOldGradeRows,
