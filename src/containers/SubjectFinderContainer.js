@@ -5,20 +5,19 @@ import {connect} from "react-redux";
 import { setGradeRowsBySubjectName } from "../actions/setGradeRowsAction";
 
 const mapStateToProps = 
-(state) => ({ 
-  gradeRows: state.gradeRows || [],
-  firstOldGradeRows: state.firstOldGradeRows || [],
-  subjectName : state.subjectName
-});
+  (state) => ({ 
+    subjectName : state.subjectName,
+    isShown :  state.firstOldGradeRows == null ? false : (state.firstOldGradeRows.length > 0 && state.subjectName !== '')
+  });
 
 const mapDispatchToProps = 
-(dispatch) => ({
-    setGradeRowsBySubjectName: 
-      (firstOldGradeRows, gradeRows, subjectName) => {
-            Progress.show();
-            dispatch(setGradeRowsBySubjectName(firstOldGradeRows, gradeRows, subjectName))
-      }
-});
+  (dispatch) => ({
+      setGradeRowsBySubjectName: 
+        (subjectName) => {
+              Progress.show();
+              dispatch(setGradeRowsBySubjectName(subjectName))
+        }
+  });
 
 const SubjectFinderContainer = connect(mapStateToProps, mapDispatchToProps)(SubjectFinder);
 export default SubjectFinderContainer;

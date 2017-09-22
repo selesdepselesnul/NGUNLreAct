@@ -32,8 +32,8 @@ export function setGradeRowsReducer(
             const payload = action.payload;
             if(payload.subjectName == '') {
                 return {
-                    gradeRows: payload.firstOldGradeRows,
-                    firstOldGradeRows: payload.firstOldGradeRows
+                    gradeRows: state.firstOldGradeRows,
+                    firstOldGradeRows: state.firstOldGradeRows
                 };
             } else {
                 return {
@@ -42,8 +42,8 @@ export function setGradeRowsReducer(
                                         .toLocaleLowerCase()
                                         .match(payload.subjectName
                                                       .toLocaleLowerCase()), 
-                                    payload.firstOldGradeRows),
-                    firstOldGradeRows: payload.firstOldGradeRows
+                                    state.firstOldGradeRows),
+                    firstOldGradeRows: state.firstOldGradeRows
                 };
             }
     }

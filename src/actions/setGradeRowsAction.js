@@ -7,12 +7,10 @@ export function setGradeRows(studentId) {
     };
 }
 
-export function setGradeRowsBySubjectName(firstOldGradeRows, gradeRows, subjectName) {
+export function setGradeRowsBySubjectName(subjectName) {
     return {
         type : 'SET_GRADE_ROWS_BY_SUBJECT_NAME',
-        payload : { 
-            firstOldGradeRows,
-            gradeRows, 
+        payload : {  
             subjectName 
         }
     };
