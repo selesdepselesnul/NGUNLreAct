@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
 import GradeFinder from '../components/GradeFinder';
 import Progress from "react-progress-2";
+import { setGradeRows } from "../actions/setGradeRowsAction";
+import {connect} from "react-redux";
 
-const FILTER_BY_STUDENT_ID_PLACEHOLDER = 'Ketik NPM disini lalu tekan enter...';
 
-const GradeFinderContainer = (props) => {
-    
-    const onKeyPressForId = (event) => {
-        if(event.key === 'Enter') {
+const mapDispatchToProps = 
+    (dispatch) => ({
+        setGradeRows: (studentId) => {
             Progress.show();
-            props.onFindSuccess(event.target.value);
-        } 
-    };
-    
-    return (<GradeFinder onKeyUp={onKeyPressForId}/>);
+            dispatch(setGradeRows(studentId))
+        }
+    });
 
-};
-  
-
+const GradeFinderContainer = connect(null, mapDispatchToProps)(GradeFinder);
 export default GradeFinderContainer;

@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 import Progress from "react-progress-2";
 
 const FILTER_BY_STUDENT_ID_PLACEHOLDER = 'Ketik NPM disini lalu tekan enter...';
-const GradeFinder = (props) => {
+const GradeFinder = ({setGradeRows}) => {
+  
+  const onKeyPressForId = (event) => {
+    if(event.key === 'Enter') {
+        setGradeRows(event.target.value);
+    } 
+  };
+
   return (
       <div className="col-md-12">
         <div className="input-group">
@@ -11,7 +18,7 @@ const GradeFinder = (props) => {
                    placeholder={FILTER_BY_STUDENT_ID_PLACEHOLDER}
                    aria-label={FILTER_BY_STUDENT_ID_PLACEHOLDER}
                    style={{border: '0'}}
-                   onKeyUp={props.onKeyUp}/>
+                   onKeyUp={onKeyPressForId}/>
         </div>
       </div>
   );
