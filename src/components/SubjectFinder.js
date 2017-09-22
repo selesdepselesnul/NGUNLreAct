@@ -14,7 +14,8 @@ const SubjectFinder = ({setGradeRowsBySubjectName, isShown}) => {
                     placeholder={SUBJECT_BY_NAME_PLACEHOLDER} 
                     aria-label={SUBJECT_BY_NAME_PLACEHOLDER}
                     style={{border: '0'}}
-                    onKeyUp={onKeyUp}/>
+                    onKeyUp={onKeyUp}
+                    ref={input => input && input.focus()}/>
         </div>
       </div>
   );
