@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import {connect} from "react-redux";
 import GradeTableContainer from './GradeTableContainer';
 import GradeFinderContainer from './GradeFinderContainer';
 import GithubBadge from '../components/GithubBadge';
@@ -13,13 +12,8 @@ const App = (props) => (
       <GithubBadge/>
       <GradeFinderContainer />
       <SubjectFinderContainer />
-      <GradeTableContainer gradeRows={props.gradeRows}/>
+      <GradeTableContainer />
     </div>
 );
 
-const mapStateToProps = 
-    (state) => ({ 
-      gradeRows: state.gradeRows || []
-    });
-
-export default connect(mapStateToProps)(App);
+export default App;
