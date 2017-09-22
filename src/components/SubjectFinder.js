@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Progress from "react-progress-2";
 
 const SUBJECT_BY_NAME_PLACEHOLDER = 'Ketik nama matkul disini untuk mecari...';
-const SubjectFinder = ({setGradeRowsBySubjectName, subjectName, isShown}) => {
+const SubjectFinder = ({setGradeRowsBySubjectName, isShown}) => {
 
   const onKeyUp = (event) => setGradeRowsBySubjectName(event.target.value);
 

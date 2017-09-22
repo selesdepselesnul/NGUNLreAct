@@ -6,7 +6,6 @@ import { setGradeRowsBySubjectName } from "../actions/setGradeRowsAction";
 
 const mapStateToProps = 
   (state) => ({ 
-    subjectName : state.subjectName,
     isShown :  state.firstOldGradeRows == null ? false : (state.firstOldGradeRows.length > 0 && state.subjectName !== '')
   });
 
