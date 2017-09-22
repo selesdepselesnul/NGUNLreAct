@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import GradeTableContainer from './GradeTableContainer';
-import GradeFinderContainer from './GradeFinderContainer';
-import GithubBadge from '../components/GithubBadge';
-import SubjectFinderContainer from './SubjectFinderContainer';
+import GradeTableContainer from '../containers/GradeTableContainer';
+import GradeFinderContainer from '../containers/GradeFinderContainer';
+import SubjectFinderContainer from '../containers/SubjectFinderContainer';
+import GithubBadge from './GithubBadge';
 import "react-progress-2/main.css"
 import Progress from "react-progress-2";
 
