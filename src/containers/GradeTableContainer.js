@@ -6,8 +6,13 @@ import R from 'ramda';
 
 const mapStateToProps = 
     (state) => ({ 
-        gradeRows: state.gradeRows == null 
-                   ? '' 
+        gradeRows: state.gradeRows == null
+                   || state.gradeRows.length === 0 
+                   ? (<tr>
+                        <td colSpan="4">
+                            <p className="text-center">Data Kosong</p>
+                        </td>
+                      </tr>) 
                    : R.map(x => (<tr key={x.kdmk}>
                                     <td>{x.kdmk}</td>
                                     <td>{x.nmmk}</td>
