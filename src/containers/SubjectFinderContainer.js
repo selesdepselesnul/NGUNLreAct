@@ -1,21 +1,24 @@
 import React, { Component } from "react";
 import Progress from "react-progress-2";
-import SubjectFinder from "../components/SubjectFinder"
+import SubjectFinder from "../components/SubjectFinder";
+import {connect} from "react-redux";
+import { setGradeRowsBySubjectName } from "../actions/setGradeRowsAction";
 
-const SUBJECT_BY_NAME_PLACEHOLDER = 'Ketik nama matkul disini untuk mecari...';
-const SubjectFinderContainer = (props) => {
-  
-  const onKeyPressSubject = (event) => {
-      Progress.show();
-      props.onFindSuccess(props.firstOldGradeRows, 
-                          props.gradeRows, 
-                          event.target.value);
-  };
+const mapStateToProps = 
+(state) => ({ 
+  gradeRows: state.gradeRows || [],
+  firstOldGradeRows: state.firstOldGradeRows || [],
+  subjectName : state.subjectName
+});
 
-  const isSubjectFinderShown = props.firstOldGradeRows.length > 0 && props.subjectName !== '';
-  return (<SubjectFinder onKeyUp={onKeyPressSubject} isShown={isSubjectFinderShown}/>);
+const mapDispatchToProps = 
+(dispatch) => ({
+    setGradeRowsBySubjectName: 
+      (firstOldGradeRows, gradeRows, subjectName) => {
+            Progress.show();
+            dispatch(setGradeRowsBySubjectName(firstOldGradeRows, gradeRows, subjectName))
+      }
+});
 
-};
-  
-
+const SubjectFinderContainer = connect(mapStateToProps, mapDispatchToProps)(SubjectFinder);
 export default SubjectFinderContainer;
