@@ -18,7 +18,8 @@ const GradeFinder = ({setGradeRows}) => {
                    placeholder={FILTER_BY_STUDENT_ID_PLACEHOLDER}
                    aria-label={FILTER_BY_STUDENT_ID_PLACEHOLDER}
                    style={{border: '0'}}
-                   onKeyUp={onKeyPressForId}/>
+                   onKeyUp={onKeyPressForId}
+                   ref={input => input && input.focus()}/>
         </div>
       </div>
   );
