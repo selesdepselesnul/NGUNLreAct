@@ -60,7 +60,7 @@ function setGradeRowsFulfilled(res) {
 
 export function setGradeRowsEpic(action$) {
     const url = 
-        'https://cors-anywhere.herokuapp.com/http://www.unla.ac.id/index.php/e_akademic/c_kartuhasilstudi/grid';
+        'http://www.unla.ac.id/index.php/e_akademic/c_kartuhasilstudi/grid';
     return action$.filter(action => action.type === SET_GRADE_ROWS)
                   .switchMap(action => {
                         return Observable
