@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import Progress from "react-progress-2";
+import { Observable } from 'rxjs/Observable';
+import R from 'ramda';
 
 const SUBJECT_BY_NAME_PLACEHOLDER = 'Ketik nama matkul disini untuk mencari...';
 const SubjectFinder = ({setGradeRowsBySubjectName, isShown}) => {
 
   const onKeyUp = (event) => {
-    if(event.key !== 'Enter') {
+
+    const controlKeys = 
+            ["Enter", 
+             "ArrowUp", 
+             "ArrowDown",
+             "ArrowLeft",
+             "ArrowRight"];
+
+    if(!R.contains(event.key, controlKeys))  
       setGradeRowsBySubjectName(event.target.value);
-    }
   }
 
   return (
